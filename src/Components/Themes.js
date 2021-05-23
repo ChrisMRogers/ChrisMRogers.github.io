@@ -7,4 +7,5 @@ export const darkTheme = {
     body: '#212121',
     text: '#FAFAFA',
     background: '#999',
+
 }

@@ -3,14 +3,17 @@ import { func, string } from 'prop-types';
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+
 const Button = styled.button`
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   outline: none;
-  font-size:2rem;
+  font-size:1.5rem;
   cursor: pointer;
+  display: block;
   border: none;
   transition: all 1.0s linear;
+  padding: .5em;
   }
 `;
 const Toggle = ({ theme, toggleTheme }) => {
