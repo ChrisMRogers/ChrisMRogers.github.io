@@ -14,7 +14,7 @@ function Homepage() {
     return (
 
         <Div>
-            <h1 style={{ fontSize: '10em', marginBottom: '0em', marginTop: '0em' }}>Chris Rogers</h1>
+            <h1 style={{ fontSize: '500%', marginBottom: '0em', marginTop: '0em' }}>Chris Rogers</h1>
             <img src="Work-in-progress.png" alt="Work in Progress" width='50%' height='50%' />
         </Div>
 
