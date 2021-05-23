@@ -10,7 +10,6 @@ const Navigation = styled.ul`
 	display:flex;
 	flex-flow: row wrap;
 	justify-content: flex-end;
-	padding-right: 10em;
 	list-style: none;
 	margin: 0;
 	`;

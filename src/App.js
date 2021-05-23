@@ -5,6 +5,7 @@ import { GlobalStyles } from "./Components/GlobalStyles";
 import { lightTheme, darkTheme } from "./Components/Themes"
 import { useDarkMode } from "./Components/useDarkMode"
 import Navbar from './Components/Navbar'
+import Homepage from './Components/Homepage'
 
 function App() {
   const [theme, mountedComponent] = useDarkMode();
@@ -17,6 +18,7 @@ function App() {
         <GlobalStyles />
         <div className="App">
           <Navbar />
+          <Homepage />
 
         </div>
       </>
