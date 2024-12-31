@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { Router, Route, Link } from "wouter";
+import Box from "@mui/material/Box";
+import { PaletteMode, ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Container } from "@mui/material";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Styled TerminalLink with dynamic hover color
+
+export default function App() {
+  const [mode, setMode] = useState<PaletteMode>(
+    (window.localStorage.getItem("theme") as PaletteMode) ?? "dark"
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem("theme", mode);
+  }, [mode]);
+
+  // Create MUI themes for light and dark modes
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+    transitions: {
+      duration: {
+        standard: 1500, // Standard duration for transitions
+      },
+    },
+  });
+
+  const toggleTheme = () => {
+    if (mode === "dark") {
+      setMode("light");
+    } else {
+      setMode("dark");
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is likely {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router base="/ChrisMRogers.github.io">
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Container>
+          <Box
+            sx={{
+              height: "100vh",
+              transition: "background 1.5s ease", // Smooth transition
+              backgroundColor: theme.palette.background.default,
+            }}
+          >
+            <Box
+              sx={{
+                flexGrow: 1,
+                backgroundColor: theme.palette.background.default,
+                color: theme.palette.text.primary,
+              }}
+            >
+              <Navbar toggleTheme={toggleTheme} />
+            </Box>
+          </Box>
+        </Container>
+      </ThemeProvider>
+    </Router>
+  );
 }
-
-export default App
