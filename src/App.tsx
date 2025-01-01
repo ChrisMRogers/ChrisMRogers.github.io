@@ -62,7 +62,12 @@ export default function App() {
                 <Navbar toggleTheme={toggleTheme} />
 
                 <Switch>
-                  <Route>404: No such page!</Route>
+                  <Route path={"/who"}>
+                    <Who />
+                  </Route>
+                  <Route>
+                    <PlaceHolder />
+                  </Route>
                 </Switch>
               </Box>
             </Box>
@@ -72,3 +77,22 @@ export default function App() {
     </Router>
   );
 }
+
+const Who = () => {
+  return (
+    <>
+      <h1>Chris Rogers</h1>
+    </>
+  );
+};
+
+const PlaceHolder = () => (
+  <Container>
+    <img
+      src="construction.gif"
+      alt="Work in Progress"
+      width="25%"
+      height="25%"
+    />
+  </Container>
+);
