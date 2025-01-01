@@ -20,7 +20,7 @@ export const Navbar = ({ toggleTheme }: NavbarProps) => {
       elevation={0}
       position="static"
       sx={{
-        transition: "background 1.5s ease", // Transition for the AppBar background
+        transition: "background 1.5s ease",
         background: "inherit",
       }}
     >
@@ -34,33 +34,28 @@ export const Navbar = ({ toggleTheme }: NavbarProps) => {
           }}
         >
           <Link href="/who" asChild>
-            <TerminalLink>.who()</TerminalLink>
+            <TerminalLink href="/who">.who()</TerminalLink>
           </Link>
-
           <Link href="/work" asChild>
             <TerminalLink href="#work">.work()</TerminalLink>
           </Link>
-
           <Link href="/projects" asChild>
             <TerminalLink href="#projects">.projects()</TerminalLink>
           </Link>
-
           <Link href="/contact" asChild>
             <TerminalLink href="#contact">.contact()</TerminalLink>
           </Link>
         </Box>
 
-        {/* Toggle Icon Button */}
         <IconButton
           sx={{
             marginLeft: 1,
-            transition: "color 1.5s ease, transform 2s ease", // Smooth transition for the icon
+            transition: "color 1.5s ease, transform 2s ease",
             color: theme.palette.mode === "dark" ? "#FAFAFA" : "#363537",
             transform:
-              theme.palette.mode === "dark" ? "rotate(360deg)" : "rotate(0deg)", // Optional spin effect
+              theme.palette.mode === "dark" ? "rotate(360deg)" : "rotate(0deg)",
           }}
           onClick={toggleTheme}
-          //   color="default"
         >
           {theme.palette.mode === "dark" ? (
             <Brightness7Icon />

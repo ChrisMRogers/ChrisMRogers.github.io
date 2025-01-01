@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { Router } from "wouter";
+import { Router, Switch, Route, Redirect } from "wouter";
 import Box from "@mui/material/Box";
 import { PaletteMode, ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Container } from "@mui/material";
-
-// Styled TerminalLink with dynamic hover color
 
 export default function App() {
   const [mode, setMode] = useState<PaletteMode>(
@@ -17,14 +15,13 @@ export default function App() {
     window.localStorage.setItem("theme", mode);
   }, [mode]);
 
-  // Create MUI themes for light and dark modes
   const theme = createTheme({
     palette: {
       mode: mode,
     },
     transitions: {
       duration: {
-        standard: 1500, // Standard duration for transitions
+        standard: 1500,
       },
     },
   });
@@ -40,26 +37,37 @@ export default function App() {
   return (
     <Router base="/ChrisMRogers.github.io">
       <ThemeProvider theme={theme}>
+        <Redirect to="/who" />
         <CssBaseline />
-        <Container>
-          <Box
-            sx={{
-              height: "100vh",
-              transition: "background 1.5s ease", // Smooth transition
-              backgroundColor: theme.palette.background.default,
-            }}
-          >
+        <Box
+          sx={{
+            transition: "background 1.5s ease",
+            backgroundColor: theme.palette.background.default,
+            width: "100%",
+          }}
+        >
+          <Container sx={{ paddingX: 0 }}>
             <Box
               sx={{
-                flexGrow: 1,
-                backgroundColor: theme.palette.background.default,
-                color: theme.palette.text.primary,
+                height: "100vh",
               }}
             >
-              <Navbar toggleTheme={toggleTheme} />
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  backgroundColor: theme.palette.background.default,
+                  color: theme.palette.text.primary,
+                }}
+              >
+                <Navbar toggleTheme={toggleTheme} />
+
+                <Switch>
+                  <Route>404: No such page!</Route>
+                </Switch>
+              </Box>
             </Box>
-          </Box>
-        </Container>
+          </Container>
+        </Box>
       </ThemeProvider>
     </Router>
   );
