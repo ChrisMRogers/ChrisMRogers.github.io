@@ -18,15 +18,13 @@ const blink = keyframes`
 export const TerminalText = styled(Typography)<TypographyProps>(() => ({
   fontFamily: "'Roboto Mono', monospace",
   position: "relative",
+  display: "inline-block",
   "&:after": {
     content: "''",
     position: "absolute",
-    top: 0,
-    // right: "-15px",
-    display: "inline-block",
     backgroundColor: "#606060",
     width: "10px",
-    height: "1.2em",
+    height: "1.3em",
     animation: `${blink} 1s step-end infinite`,
   },
 }));
