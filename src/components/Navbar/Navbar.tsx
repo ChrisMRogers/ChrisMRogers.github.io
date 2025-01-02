@@ -33,17 +33,20 @@ export const Navbar = ({ toggleTheme }: NavbarProps) => {
             gap: 2,
           }}
         >
+          {/* <Link href="/" asChild>
+            <TerminalLink>.home()</TerminalLink>
+          </Link> */}
           <Link href="/who" asChild>
-            <TerminalLink href="/who">.who()</TerminalLink>
+            <TerminalLink>.who()</TerminalLink>
           </Link>
           <Link href="/work" asChild>
-            <TerminalLink href="#work">.work()</TerminalLink>
+            <TerminalLink>.work()</TerminalLink>
           </Link>
           <Link href="/projects" asChild>
-            <TerminalLink href="#projects">.projects()</TerminalLink>
+            <TerminalLink>.projects()</TerminalLink>
           </Link>
           <Link href="/contact" asChild>
-            <TerminalLink href="#contact">.contact()</TerminalLink>
+            <TerminalLink>.contact()</TerminalLink>
           </Link>
         </Box>
 

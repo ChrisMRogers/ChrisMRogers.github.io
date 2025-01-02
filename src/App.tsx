@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import { PaletteMode, ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Container } from "@mui/material";
+import { Container, Typography, useTheme } from "@mui/material";
+import { TerminalText } from "./components/TerminalText/TerminalText";
 
 export default function App() {
   const [mode, setMode] = useState<PaletteMode>(
@@ -62,6 +63,9 @@ export default function App() {
                 <Navbar toggleTheme={toggleTheme} />
 
                 <Switch>
+                  <Route path={"/"}>
+                    <Home />
+                  </Route>
                   <Route path={"/who"}>
                     <Who />
                   </Route>
@@ -78,11 +82,49 @@ export default function App() {
   );
 }
 
-const Who = () => {
+const Home = () => {
+  const theme = useTheme();
   return (
-    <>
-      <h1>Chris Rogers</h1>
-    </>
+    <Box
+      sx={{
+        transition: "background 1.5s ease",
+        backgroundColor: theme.palette.background.default,
+      }}
+    ></Box>
+  );
+};
+
+const Who = () => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      sx={{
+        transition: "background 1.5s ease",
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
+        <b>chrisRogers@Portfolio-Website ~ % </b>echo "Hi! I'm $name"
+      </Typography>
+      <Typography fontFamily={"'Roboto Mono', monospace"} variant={"h2"}>
+        Hi! I'm{" "}
+        {
+          <span
+            style={{
+              color: theme.palette.mode === "dark" ? "lightgreen" : "darkgreen",
+              transition: "color 1.5s ease",
+              fontFamily: "'Roboto Mono', monospace",
+            }}
+          >
+            {"Chris"}
+          </span>
+        }
+      </Typography>
+      <TerminalText variant={"body1"}>
+        <b>chrisRogers@Portfolio-Website ~ % </b>bash ./portfolio/whoIAm.sh
+      </TerminalText>
+    </Box>
   );
 };
 

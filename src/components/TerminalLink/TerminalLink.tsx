@@ -16,15 +16,16 @@ export const TerminalLink = styled(Link)<LinkProps>(({ theme, href }) => ({
 }));
 
 const calculateColor = (mode: "light" | "dark", href: string) => {
+  const active = window.location.href.endsWith(href);
   if (mode === "dark") {
-    if (window.location.href.includes(href)) {
-      return "#64b5f6";
+    if (active) {
+      return "lightgreen";
     } else {
       return "#FAFAFA";
     }
   } else {
-    if (window.location.href.includes(href)) {
-      return "#0d47a1";
+    if (active) {
+      return "green";
     } else {
       return "#363537";
     }
