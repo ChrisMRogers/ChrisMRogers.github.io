@@ -97,6 +97,15 @@ const Home = () => {
 const Who = () => {
   const theme = useTheme();
 
+  // const handleKeyPress = () => {
+  //   console.log("KEY PRESSED!");
+  // };
+
+  document.addEventListener("keydown", (event) => {
+    console.log("EVENT: ", event);
+    console.log(`Key ${event.key} was pressed.`);
+  });
+
   return (
     <Box
       sx={{
@@ -104,6 +113,7 @@ const Who = () => {
         backgroundColor: theme.palette.background.default,
       }}
     >
+      {/* <div onKeyDown={handleKeyPress} /> */}
       <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
         <b>chrisRogers@Portfolio-Website ~ % </b>echo "Hi! I'm $name"
       </Typography>
@@ -121,9 +131,10 @@ const Who = () => {
           </span>
         }
       </Typography>
-      <TerminalText variant={"body1"}>
+      <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
         <b>chrisRogers@Portfolio-Website ~ % </b>bash ./portfolio/whoIAm.sh
-      </TerminalText>
+      </Typography>
+      <TerminalText variant="body1">Ready to start? {"[Y/n]"}</TerminalText>
     </Box>
   );
 };

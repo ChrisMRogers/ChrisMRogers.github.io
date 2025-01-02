@@ -25,6 +25,7 @@ export const TerminalText = styled(Typography)<TypographyProps>(() => ({
     backgroundColor: "#606060",
     width: "10px",
     height: "1.3em",
+    marginLeft: ".5em",
     animation: `${blink} 1s step-end infinite`,
   },
 }));
