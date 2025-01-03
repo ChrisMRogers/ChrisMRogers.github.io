@@ -39,9 +39,9 @@ export const Navbar = ({ toggleTheme }: NavbarProps) => {
           <Link href="/who" asChild>
             <TerminalLink>.who()</TerminalLink>
           </Link>
-          <Link href="/work" asChild>
+          {/* <Link href="/work" asChild>
             <TerminalLink>.work()</TerminalLink>
-          </Link>
+          </Link> */}
           <Link href="/projects" asChild>
             <TerminalLink>.projects()</TerminalLink>
           </Link>

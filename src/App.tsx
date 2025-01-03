@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import { PaletteMode, ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Container, Typography, useTheme } from "@mui/material";
+import { Container, Grid2, Typography, useTheme } from "@mui/material";
 import { TerminalText } from "./components/TerminalText/TerminalText";
+import "./App.css";
 
 export default function App() {
   const [mode, setMode] = useState<PaletteMode>(
@@ -42,10 +43,15 @@ export default function App() {
         <CssBaseline />
         <Box
           sx={{
-            transition: "background 1.5s ease",
+            transition: "background-image, background-color 1.5s ease",
             backgroundColor: theme.palette.background.default,
             width: "100%",
           }}
+          className={
+            theme.palette.mode === "dark"
+              ? "background-pattern-dark"
+              : "background-pattern-light"
+          }
         >
           <Container sx={{ paddingX: 0 }}>
             <Box
@@ -56,7 +62,7 @@ export default function App() {
               <Box
                 sx={{
                   flexGrow: 1,
-                  backgroundColor: theme.palette.background.default,
+                  // backgroundColor: theme.palette.background.default,
                   color: theme.palette.text.primary,
                 }}
               >
@@ -96,45 +102,100 @@ const Home = () => {
 
 const Who = () => {
   const theme = useTheme();
+  // const [text, setText] = useState("");
 
-  // const handleKeyPress = () => {
-  //   console.log("KEY PRESSED!");
-  // };
+  // document.addEventListener("keydown", (event) => {
+  //   console.log("EVENT: ", event);
+  //   console.log(`Key ${event.key} was pressed.`);
 
-  document.addEventListener("keydown", (event) => {
-    console.log("EVENT: ", event);
-    console.log(`Key ${event.key} was pressed.`);
-  });
+  //   if (event.key === "Backspace") {
+  //     setText(text.slice(0, -1));
+  //   } else if (event.key !== "Enter") {
+  //     setText(text + event.key);
+  //   }
+  // });
 
   return (
     <Box
       sx={{
         transition: "background 1.5s ease",
-        backgroundColor: theme.palette.background.default,
+        // backgroundColor: theme.palette.background.default,
       }}
     >
-      {/* <div onKeyDown={handleKeyPress} /> */}
       <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
-        <b>chrisRogers@Portfolio-Website ~ % </b>echo "Hi! I'm $name"
+        <b>chrisRogers@Portfolio-Website ~ % </b>echo "Hi! I'm $name."
       </Typography>
       <Typography fontFamily={"'Roboto Mono', monospace"} variant={"h2"}>
         Hi! I'm{" "}
         {
           <span
+            className="glowing-text"
             style={{
               color: theme.palette.mode === "dark" ? "lightgreen" : "darkgreen",
-              transition: "color 1.5s ease",
-              fontFamily: "'Roboto Mono', monospace",
             }}
           >
             {"Chris"}
           </span>
         }
       </Typography>
-      <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
+      <TerminalText fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
         <b>chrisRogers@Portfolio-Website ~ % </b>bash ./portfolio/whoIAm.sh
+      </TerminalText>
+
+      <Typography
+        fontFamily={"'Roboto Mono', monospace"}
+        variant={"h2"}
+        paddingTop={"1em"}
+        paddingBottom={".25em"}
+      >
+        I'm a{" "}
+        {
+          <span
+            className="glowing-text"
+            style={{
+              color: theme.palette.mode === "dark" ? "lightgreen" : "darkgreen",
+            }}
+          >
+            {"full stack application developer."}
+          </span>
+        }
       </Typography>
-      <TerminalText variant="body1">Ready to start? {"[Y/n]"}</TerminalText>
+
+      <Grid2 container>
+        <Grid2 size={5}>
+          <Typography fontFamily={"'Roboto Mono', monospace"} variant={"body1"}>
+            I'm the kind of developer who writes bugs so elegant you'd think
+            they were features—but don't worry, I fix them too. Leading QDoc’s
+            app development taught me how to build not just software but
+            experiences. Stick around; I’ve got some fun projects to share.
+          </Typography>
+        </Grid2>
+        <Grid2 size={5} />
+        <Grid2 size={2}>
+          <div className="skills-box">
+            <img
+              src="./public/swift-icon.webp"
+              style={{ width: "70px", height: "auto" }}
+            />
+            <div className="skills-box-name">Swift</div>
+          </div>
+        </Grid2>
+      </Grid2>
+
+      {/* <Typography
+        sx={{ textAlign: "center" }}
+        fontFamily={"'Roboto Mono', monospace"}
+        variant={"body1"}
+      >
+        I'm the kind of developer who writes bugs so elegant you'd think they
+        were features—but don't worry, I fix them too. Leading QDoc’s app
+        development taught me how to build not just software but experiences.
+        Stick around; I’ve got some fun projects to share.
+      </Typography> */}
+
+      {/* <TerminalText variant="body1">
+        Ready to start? {"[Y/n]"}
+      </TerminalText> */}
     </Box>
   );
 };
